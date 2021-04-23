@@ -11,10 +11,10 @@ import entity.Show;
 
 public class ShowDao {
 	private Connection connection;
-	private final String GET_SHOWS_QUERY = "SELECT * FROM shows";
-	private final String ADD_NEW_SHOW = "INSERT INTO shows(name) VALUES(?)";
-	private final String UPDATE_SHOW = "UPDATE shows SET name = (?) WHERE id = (?)";
-	private final String DELETE_SHOW_BY_ID = "DELETE FROM shows WHERE id = (?)";
+	private final String GET_SHOWS_QUERY = "SELECT * FROM american_shows";
+	private final String ADD_NEW_SHOW = "INSERT INTO american_shows(name) VALUES(?)";
+	private final String UPDATE_SHOW = "UPDATE american_shows SET name = (?) WHERE id = (?)";
+	private final String DELETE_SHOW_BY_ID = "DELETE FROM american_shows WHERE id = (?)";
 	
 	public ShowDao() {
 		connection = DBConnection.getConnection();
