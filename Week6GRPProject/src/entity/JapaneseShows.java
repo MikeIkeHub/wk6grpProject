@@ -6,7 +6,7 @@ public class JapaneseShows {
 	private String animated;
 	
 	public JapaneseShows(int jShowId, String jShowName, String animated) {
-		this.setShowId(jShowId);
+		this.setjShowId(jShowId);
 		this.setjShowName(jShowName);
 		this.setAnimated(animated);
 	}
@@ -15,7 +15,7 @@ public class JapaneseShows {
 		return jShowId;
 	}
 
-	public void setShowId(int jShowId) {
+	public void setjShowId(int jShowId) {
 		this.jShowId = jShowId;
 	}
 
