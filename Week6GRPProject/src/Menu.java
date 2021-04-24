@@ -7,7 +7,7 @@ import dao.ShowDao;
 import entity.Show;
 
 public class Menu {
-	
+
 	private ShowDao showDao = new ShowDao();
 	private Scanner scanner = new Scanner(System.in);
 	private List<String> options = Arrays.asList(
