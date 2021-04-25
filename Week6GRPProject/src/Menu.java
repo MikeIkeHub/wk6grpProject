@@ -14,7 +14,11 @@ public class Menu {
 			"Display Shows",
 			"Add a Show",
 			"Update a Show",
-			"Delete a Show");
+			"Delete a Show")
+			"Display Movies",
+			"Add a Movie",
+			"Update a Movie",
+			"Delete a Movie";
 	
 	public void start() {
 		String input = "";
@@ -30,7 +34,14 @@ public class Menu {
 				updateShow();
 			} else if (input.equals("3")) {
 				deleteShow();
-			}
+			} else if (input.equals("4")) {
+				readMovies();
+			} else if (input.equals("5")) {
+				addMovie();
+			} else if (input.equals("6")) {
+				updateMovie();
+			} else if (input.equals("7")) {
+				deleteMovie();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -52,6 +63,15 @@ public class Menu {
 			System.out.println(show.getShowId() + ": " + show.getShowName());
 		}
 	}
+		
+	private void readMovies() throws SQLException {
+		List<Movie> movies = movieDao.getMovies();
+		for (Movie movie : movies) {
+			System.out.println(movie.getMovieId() + ": " + movie.getMovieName());
+		}
+	}
+	
+	}
 	
 	private void addShow() throws SQLException {
 		System.out.print("Enter show name:");
@@ -71,6 +91,33 @@ public class Menu {
 		System.out.println("Enter number of show to delete: ");
 		int id = Integer.parseInt(scanner.nextLine());
 		showDao.deleteShow(id);
+	}
+	
+	private void readMovies() throws SQLException {
+		List<Movie> movies = movieDao.getMovies();
+		for (Movie movie : movies) {
+			System.out.println(movie.getmovieId() + ": " + movie.getmovieName());
+		}
+	}
+	
+	private void addMovie() throws SQLException {
+		System.out.print("Enter show name:");
+		String movieName = scanner.nextLine();
+		movieDao.addNewMovie(movieName);
+	}
+	
+	private void updateMovie() throws SQLException {
+		System.out.println("Please enter the id of show you would like to update");
+		int id = Integer.parseInt(scanner.nextLine());
+		System.out.println("Please input your update");
+		String movieName = scanner.nextLine();
+		movieDao.updateMovie(id, movieName);
+	}
+	
+	private void deleteMovie() throws SQLException {
+		System.out.println("Enter number of show to delete: ");
+		int id = Integer.parseInt(scanner.nextLine());
+		movieDao.deleteMovie(id);
 	}
 	
 }
