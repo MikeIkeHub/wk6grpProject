@@ -31,9 +31,10 @@ public class JapaneseShowsDao {
 		return jShows;
 	}
 	
-	public  void addNewjShow(String jShowName) throws SQLException {
+	public void addNewjShow(String jShowName, String animated) throws SQLException {
 		PreparedStatement ps = connection.prepareStatement(ADD_NEW_JSHOW);
 		ps.setString(1, jShowName);
+		ps.setString(2, animated);
 		ps.executeUpdate();
 	}
 	

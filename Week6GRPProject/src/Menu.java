@@ -79,8 +79,6 @@ public class Menu {
 		}
 	}
 	
-	}
-	
 	private void addShow() throws SQLException {
 		System.out.print("Enter show name:");
 		String showName = scanner.nextLine();
@@ -102,13 +100,13 @@ public class Menu {
 	}
 	
 	private void addMovie() throws SQLException {
-		System.out.print("Enter show name:");
+		System.out.print("Enter movie name:");
 		String movieName = scanner.nextLine();
 		movieDao.addNewMovie(movieName);
 	}
 	
 	private void updateMovie() throws SQLException {
-		System.out.println("Please enter the id of show you would like to update");
+		System.out.println("Please enter the id of movie you would like to update");
 		int id = Integer.parseInt(scanner.nextLine());
 		System.out.println("Please input your update");
 		String movieName = scanner.nextLine();
@@ -116,9 +114,60 @@ public class Menu {
 	}
 	
 	private void deleteMovie() throws SQLException {
-		System.out.println("Enter number of show to delete: ");
+		System.out.println("Enter number of movie to delete: ");
 		int id = Integer.parseInt(scanner.nextLine());
 		movieDao.deleteMovie(id);
 	}
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	private void readjShows() throws SQLException {
+		List<JapaneseShows> jshows = jShowDao.getjShows();
+		for (JapaneseShows jshow : jshows) {
+			System.out.println(jshow.getjShowId() + ": " + jshow.getjShowName());
+		}
+	}
+	
+	private void addjShow() throws SQLException {
+		System.out.print("Enter Japanese show name:");
+		String jShowName = scanner.nextLine();
+		do{String animated = scanner.nextLine();
+		System.out.print("Is it animated?");
+		if(animated.equals("Yes") || animated.equals("No")) {
+			jShowDao.addNewjShow(jShowName, animated);
+			break;
+			} else if(!animated.equals("Yes") && !animated.equals("No"))
+				System.out.println("Please input a vald entry: Yes/No");
+		}while(true);
+	}
+	
+	private void updatejShow() throws SQLException {
+		System.out.println("Please enter the id of show you would like to update");
+		int id = Integer.parseInt(scanner.nextLine());
+		System.out.println("Please update name");
+		String jShowName = scanner.nextLine();
+		System.out.println("Is it animated? Yes/No");
+		do{String animated = scanner.nextLine();
+		if(animated.equals("Yes") || animated.equals("No")) {
+			jShowDao.updatejShow(id, jShowName, animated);
+			break;
+			} else if(!animated.equals("Yes") && !animated.equals("No"))
+				System.out.println("Please input a vald entry: Yes/No");
+		}while(true);
+	}
+	
+	private void deletejShow() throws SQLException {
+		System.out.println("Enter number of show to delete: ");
+		int id = Integer.parseInt(scanner.nextLine());
+		jShowDao.deletejShow(id);
+	}
 }
