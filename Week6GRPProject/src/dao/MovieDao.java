@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import entity.Movies;
-import entity.Show;
 
 public class MovieDao {
 
