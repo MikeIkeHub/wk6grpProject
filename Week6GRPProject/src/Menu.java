@@ -24,7 +24,11 @@ public class Menu {
 			"Display Movies",
 			"Add a Movie",
 			"Update a Movie",
-			"Delete a Movie");
+			"Delete a Movie",
+			"Display Japanese Shows",
+			"Add a Japanese Show",
+			"Update a Japanese Show",
+			"Delete a Japanese Show");
 	
 	public void start() {
 		String input = "";
@@ -48,6 +52,14 @@ public class Menu {
 				updateMovie();
 			} else if (input.equals("7")) {
 				deleteMovie();
+			} else if (input.equals("8")) {
+				readjShows();
+			} else if (input.equals("9")) {
+				addjShow();
+			} else if (input.equals("10")) {
+				updatejShow();
+			} else if (input.equals("11")) {
+				deletejShow();
 			}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -119,17 +131,6 @@ public class Menu {
 		movieDao.deleteMovie(id);
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	private void readjShows() throws SQLException {
 		List<JapaneseShows> jshows = jShowDao.getjShows();
 		for (JapaneseShows jshow : jshows) {
@@ -140,8 +141,8 @@ public class Menu {
 	private void addjShow() throws SQLException {
 		System.out.print("Enter Japanese show name:");
 		String jShowName = scanner.nextLine();
-		do{String animated = scanner.nextLine();
 		System.out.print("Is it animated?");
+		do{String animated = scanner.nextLine();
 		if(animated.equals("Yes") || animated.equals("No")) {
 			jShowDao.addNewjShow(jShowName, animated);
 			break;
