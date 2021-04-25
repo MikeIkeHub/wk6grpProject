@@ -3,22 +3,25 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
+import dao.JapaneseShowsDao;
+import entity.JapaneseShows;
 import dao.ShowDao;
 import entity.Show;
 
 public class Menu {
 
+	private JapaneseShowsDao jShowDao = new JapaneseShowsDao();
 	private ShowDao showDao = new ShowDao();
 	private Scanner scanner = new Scanner(System.in);
 	private List<String> options = Arrays.asList(
 			"Display Shows",
 			"Add a Show",
 			"Update a Show",
-			"Delete a Show")
+			"Delete a Show",
 			"Display Movies",
 			"Add a Movie",
 			"Update a Movie",
-			"Delete a Movie";
+			"Delete a Movie");
 	
 	public void start() {
 		String input = "";
@@ -42,12 +45,14 @@ public class Menu {
 				updateMovie();
 			} else if (input.equals("7")) {
 				deleteMovie();
+			}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 			System.out.println("Press enter to return to menu");
 			scanner.nextLine();
 		} while (!input.equals("-1"));
+	  
 	}
 	
 	private void printMenu() {
