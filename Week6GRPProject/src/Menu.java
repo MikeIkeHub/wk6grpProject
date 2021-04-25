@@ -4,12 +4,15 @@ import java.util.List;
 import java.util.Scanner;
 
 import dao.JapaneseShowsDao;
+import dao.MovieDao;
 import entity.JapaneseShows;
+import entity.Movies;
 import dao.ShowDao;
 import entity.Show;
 
 public class Menu {
 
+	private MovieDao movieDao = new MovieDao();
 	private JapaneseShowsDao jShowDao = new JapaneseShowsDao();
 	private ShowDao showDao = new ShowDao();
 	private Scanner scanner = new Scanner(System.in);
@@ -70,9 +73,9 @@ public class Menu {
 	}
 		
 	private void readMovies() throws SQLException {
-		List<Movie> movies = movieDao.getMovies();
-		for (Movie movie : movies) {
-			System.out.println(movie.getMovieId() + ": " + movie.getMovieName());
+		List<Movies> movies = movieDao.getMovies();
+		for (Movies movie : movies) {
+			System.out.println(movie.getmovieId() + ": " + movie.getmovieName());
 		}
 	}
 	
@@ -96,13 +99,6 @@ public class Menu {
 		System.out.println("Enter number of show to delete: ");
 		int id = Integer.parseInt(scanner.nextLine());
 		showDao.deleteShow(id);
-	}
-	
-	private void readMovies() throws SQLException {
-		List<Movie> movies = movieDao.getMovies();
-		for (Movie movie : movies) {
-			System.out.println(movie.getmovieId() + ": " + movie.getmovieName());
-		}
 	}
 	
 	private void addMovie() throws SQLException {

@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import entity.Movies;
 import entity.Show;
 
 public class MovieDao {
@@ -21,13 +22,13 @@ public class MovieDao {
 		connection = DBConnection.getConnection();
 	}
 	
-	public List<Movie> getMovies() throws SQLException {
+	public List<Movies> getMovies() throws SQLException {
 		ResultSet rs = connection.prepareStatement(GET_MOVIES_QUERY).executeQuery();
 		
-		List<Movie> movies = new ArrayList<Movie>();
+		List<Movies> movies = new ArrayList<Movies>();
 		
 		while(rs.next()) {
-			movies.add(new Movie(rs.getInt(1), rs.getString(2)));
+			movies.add(new Movies(rs.getInt(1), rs.getString(2)));
 		}
 		
 		return movies;
